@@ -26,10 +26,6 @@ export default function ToDoItem() {
         </div>
       </div>
 
-      <div className="p-4 drop-shadow bg-white text-slate-700 rounded-lg  col-span-2 lg:col-span-1  ">
-        2
-      </div>
-
     </div>
   )
 }
