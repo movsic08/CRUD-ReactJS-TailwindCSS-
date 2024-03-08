@@ -1,7 +1,8 @@
 // import './App.css';
 import "./index.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Navbar, ToDoItem, AddTaskModal } from './components';
+import {ToDoItemSkeleton } from './components/skeletons';
 
 
 function App() {
@@ -10,6 +11,14 @@ function App() {
 
   const openModal = () => setAddModalOpen(true);
   const closeModal = () => setAddModalOpen(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1200);
+  });
+  
 
   return (
     <div className=" bg-slate-100 font-poppinsw-screen h-screen  text-slate-800">
@@ -23,9 +32,9 @@ function App() {
               <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>Add</button>
         </div>
-
+        {isLoading && <ToDoItemSkeleton /> }
         <AddTaskModal isOpen={isAddModalOpen}  isCloseModal={closeModal}/>
-        <ToDoItem />
+        {!isLoading && <ToDoItem />}
       </div>
     </div>
   );
